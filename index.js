@@ -1,3 +1,6 @@
+const functions = require('firebase-functions');
+
+
 const express = require("express");
 const apicache = require("apicache");
 const path = require("path");
@@ -252,10 +255,20 @@ app.use("/user/subcount", require("./router/user_subcount"));
 
 app.use("/user/record", require("./router/user_playrecord"));
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`server running @ http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`server running @ http://localhost:${port}`);
+// });
+
+// module.exports = app;
+
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+exports.helloWorld = functions.https.onRequest((request, response) => {
+ response.send("Hello from Firebase!");
 });
 
-module.exports = app;
+exports.widgets = functions.https.onRequest(app);
